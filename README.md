@@ -4,4 +4,4 @@ A Free and Open source mapping project (take picture with the delay mode, then r
 ________
 
 Documentation language :
-- (French)[Documentation/french_guide.md]
+- [French](Documentation/french_guide.md)
