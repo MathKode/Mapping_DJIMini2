@@ -8,18 +8,21 @@ from matplotlib import pyplot
 
 
 
-### CONSTANT ###
+####### CONSTANT #######
 picture_folder = "pictures"
-result_name = "test20_4_____ds4.jpeg" #-0.175 rad or -10.0267 deg
+result_name = "final____.jpeg" #-0.175 rad or -10.0267 deg
 meter_by_pixel_nb = 1
-altitude = 22 #m
+""" Soit ALTITUDE OR PICTURE OR COTA (not the three) """
+altitude = None #m
 picture_x_meter = None #m
 picture_y_meter = None #m
+cota_x = 4 # pixel/m
+cota_y = 3 # pixel/m
 Blur = False #True Or False
 show_graph = False
 picture_align_type = 1 #1=Horizontal ; 2=Vertical
-picture_align = ["reduce_DJI_0220.JPG","reduce_DJI_0222.JPG"] 
-################
+picture_align = ["reduce_DJI_0205.JPG","reduce_DJI_0213.JPG"] 
+########################
 
 def get_exif(pic_folder,picture_name):
     img = PIL.Image.open(str(path.join(pic_folder,picture_name)))
@@ -74,7 +77,14 @@ def angle_prediction(center_pic,picture_align_name,picture_align_type):
     if picture_align_type==1:
         x, y=center_pic[picture_align_name]
         print(x,y)
-        angle=atan(x/y)-pi
+        angle=atan(x/y)
+        if x>=0 and y<=0:
+            #Angle=-45 Ajoute 90 deg
+            print("Changement angle 1")
+            angle=angle*-1+pi/2
+        elif x<=0 and y<=0:
+            print("Changement angle 2")
+            angle=angle*-1-pi/2
     else :
         x, y=center_pic[picture_align_name]
         print(x,y)
@@ -177,7 +187,7 @@ def copier_image(pic_folder,picture_name,begin_x,begin_y,image_result,blur):
                     image_result.putpixel((begin_x+x,begin_y+y),middle)
     return image_result
 
-def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,show_graph,picture_align,picture_align_type):
+def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,show_graph,picture_align,picture_align_type,cota_x,cota_y):
     ls_pic=listdir(pic_folder)
     print(ls_pic)
     gps_pic={} #long, lat
@@ -264,13 +274,25 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
     """
     
     #https://pixspy.com/
-    if picture_x_meter==None:
-        print("FIND IMAGE X Meter BY ALTITUDE")
-        picture_x_meter=image_x_pronostic(altitude)
-        picture_y_meter=image_y_pronostic(altitude)
-        print("picture x meter",picture_x_meter)
-    cota_x = int(pic_width/picture_x_meter)
-    cota_y = int(pic_height/picture_y_meter)
+    #COTA X
+    if cota_x==None:
+        if picture_x_meter==None:
+            print("FIND IMAGE X Meter BY ALTITUDE")
+            picture_x_meter=image_x_pronostic(altitude)
+            print("picture x meter",picture_x_meter)
+        cota_x = int(pic_width/picture_x_meter)
+    else:
+        cota_x=int(cota_x)
+    
+    #COTA Y
+    if cota_y==None:
+        if picture_y_meter==None:
+            print("FIND IMAGE Y Meter BY ALTITUDE")
+            picture_y_meter=image_y_pronostic(altitude)
+            print("picture y meter",picture_y_meter)
+        cota_y = int(pic_height/picture_y_meter)
+    else:
+        cota_y = int(cota_y)
     print("COTA X-Y",cota_x,cota_y)
     
     
@@ -305,4 +327,4 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
 
  
 
-main(picture_folder,result_name,altitude, picture_x_meter,picture_y_meter,Blur,show_graph,picture_align,picture_align_type)
+main(picture_folder,result_name,altitude, picture_x_meter,picture_y_meter,Blur,show_graph,picture_align,picture_align_type,cota_x,cota_y)
