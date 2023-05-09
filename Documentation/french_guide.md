@@ -9,8 +9,8 @@ Ici vous avez un exemple de rendu :
 
 *Version 1 avant réglage :*
 
-<img src="Illustration/test4.jpeg">
+<img src="../Illustration/test4.jpeg">
 
 *Version 1.2 après réglage :
 
-<img src="Illustration/test200_26_reduce.jpeg" width=300px>
+<img src="../Illustration/test200_26_reduce.jpeg" width=400px>
