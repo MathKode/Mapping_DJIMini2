@@ -29,7 +29,7 @@ Les photos doivent toute être prise à la **même altitude** (pour ne pas fauss
 
 Ce code assemble des images de hautes qualités. Or Haute qualité est associé à haut temps de traitement ! Pour diminuer le temps de traitement des images pendant la phase d'ajustement, nous vous recommandons de diminuer la qualité de ces dernières...
 
-Le script (reducer_quality.py)[../reducer_quality.py] vous permet de baisser la qualité de vos photos : 
+Le script [reducer_quality.py](../reducer_quality.py) vous permet de baisser la qualité de vos photos : 
 - Vous choississez un niveau de compression (minimun 1)
 - Le script traite l'image et vous en créer une nouvelle (reduce_<NOM-IMAGE>)
 
@@ -37,7 +37,7 @@ Le script (reducer_quality.py)[../reducer_quality.py] vous permet de baisser la 
 
 ## Traitement logiciel
 
-Sur le logiciel ((main2.py)[../main2.py]), il y a de nombreuse variable à paramétrer. Nous les détaillons ici :
+Sur le logiciel ([main2.py](../main2.py)), il y a de nombreuse variable à paramétrer. Nous les détaillons ici :
 - **picture_folder** (*string*) : contient le nom du dossier où sont stocké les images à assembler 
 - **result_name** (*string*) : nom final de l'image (avec le .jpeg)
 - **Blur** (*boolean*) : Active l'effet Blur, ce qui permet de voire à travers les images superposées
