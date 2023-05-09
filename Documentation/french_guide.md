@@ -34,3 +34,22 @@ Le script (reducer_quality.py)[../reducer_quality.py] vous permet de baisser la 
 - Le script traite l'image et vous en créer une nouvelle (reduce_<NOM-IMAGE>)
 
 *Conseil: Utiliser des images réduites pour la calibration du logiciel (cota_x, cota_y et angle). Vous pourrez ensuite les remplacez par les images de bonne qualité SANS CHANGEZ LES PARAMATRES*
+
+## Traitement logiciel
+
+Sur le logiciel ((main2.py)[../main2.py]), il y a de nombreuse variable à paramétrer. Nous les détaillons ici :
+- **picture_folder** (*string*) : contient le nom du dossier où sont stocké les images à assembler 
+- **result_name** (*string*) : nom final de l'image (avec le .jpeg)
+- **Blur** (*boolean*) : Active l'effet Blur, ce qui permet de voire à travers les images superposées
+- **show_graph** (*boolean*) : Affiche les graphiques de contrôle (util au réglage : voir note *Correction Image*)
+- **picture_align_type** (*1 or 2*) : Spécifie si les 2 photos repères sont alignés verticalement ou horizontalement (1 ou 2)
+- **picture_align** (*[PICTURE1_NAME, PICTURE2_NAME]*) : Noms des 2 photos servant de repère (voir note *Prise de Photo*)
+
+Les paramètres suivant permettent de pronostiquer la valeur de *cota_x* et *cota_y*. C'est deux variables servent à calculer le nombre de pixel nécessaire pour un espacement de 1m (si cota_x=30px/m et qu'il y a une distance de 3m alors, il y aura 90pixels qui s'éparera les deux images).
+Ainsi soit vous renseigner *altitude*, soit *picture_x_meter* *picture_y_meter*, soit *cota_x* *cota_y* (pas les 3 !) :
+- **altitude** (*m*): altitude de vol (approximation du cota fiable-)
+- **picture_x_meter** (*m*) : nombre de mètre pris sur la largeur de l'image (approximation du cota fiable+)
+- **picture_y_meter** (*m*) : nombre de mètre pris sur l'hauteur de l'image (approximation du cota fiable+)
+- **cota_x** (*px/m*) : nombre de pixel pour 1 m suivant l'axe X
+- **cota_y** (*px/m*) : nombre de pixel pour 1 m suivant l'axe Y
+
