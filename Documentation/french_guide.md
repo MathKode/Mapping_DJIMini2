@@ -73,5 +73,12 @@ Il est possibles que les images sont proportionnellement au bon endroit MAIS que
 
 #### Angle
 
-Avant de toucher au proportions, il faut s'assurer que les images soient correctement alignées dans l'espace. Pour ce faire, modifié le script pour afficher les graphiques (``show_graph=True``) et regardé attentivement le 3ème graphique :
+Avant de toucher au proportions, il faut s'assurer que les images soient correctement alignées dans l'espace. Pour ce faire, modifié le script pour afficher les graphiques (``show_graph=True``) et regardé attentivement l'évolution du 2ème au 3ème graphique...
+ 
+*2ème graphique*
+<img src="../Illustration/GRAPH2.png">
+
+ *3ème graphique*
+<img src="../Illustration/GRAPH3.png">
+ 
 
