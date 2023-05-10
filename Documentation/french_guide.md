@@ -62,5 +62,16 @@ Ainsi soit vous renseigner *altitude*, soit *picture_x_meter* *picture_y_meter*,
 
 ## Execution du scipt
 
-Une fois paramétré, vous pouvez exécuter le script par la commande ``python3.exe main2.py``. Celui-ci calculera automatiquement un 
+Une fois paramétré, vous pouvez exécuter le script par la commande ``python3.exe main2.py``. Celui-ci calcule automatiquement un angle d'alignement et le rapport entre pixel et mètre (*cota*).
+Des erreurs peuvent apparaître car le script calcule une valeur approché du rapport entre le nombre de pixel sur l'image et le nombre de mètre. De même, les 2 images utilisé lors de la calibration (et qui sont sensé être alignées) peuvent avoir un décalage de 0.01m...
+
+Ainsi quand vous exécutez le script, notez biens les informations concernant les **cotasXY** et l'**angle**. On les modifiera ensuite pour faire une image de haute qualité !
+ 
+## Correction des images
+ 
+Il est possibles que les images sont proportionnellement au bon endroit MAIS que les proportions soient erronnées. Cette section aborde les modifications à réaliser pour ajuster l'image.
+
+#### Angle
+
+Avant de toucher au proportions, il faut s'assurer que les images soient correctement alignées dans l'espace. Pour ce faire, modifié le script pour afficher les graphiques (``show_graph=True``) et regardé attentivement le 3ème graphique :
 
