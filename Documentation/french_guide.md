@@ -76,9 +76,11 @@ Il est possibles que les images sont proportionnellement au bon endroit MAIS que
 Avant de toucher au proportions, il faut s'assurer que les images soient correctement alignées dans l'espace. Pour ce faire, modifié le script pour afficher les graphiques (``show_graph=True``) et regardé attentivement l'évolution du 2ème au 3ème graphique...
  
 *2ème graphique*
+ 
 <img src="../Illustration/GRAPH2.png" width=300px>
 
 *3ème graphique ang=50°*
+ 
 <img src="../Illustration/GRAPH3.png" width=300px>
  
 Que s'est-il passé ?
@@ -89,11 +91,13 @@ Le repère à pivoté sur lui-même selon un angle de 50deg afin que le premier 
 - **Augmente Angle** : Si on augmente l'angle, alors les images vont être poussé vers la gauche...
 
 *3ème graphique ang=70°*
+ 
 <img src="../Illustration/GRAPH2_AngleUP.png" width=300px>
 
 - **Diminue Angle** : Si on diminue l'angle, alors les images vont être poussé vers la droite...
 
 *3ème graphique ang=20°*
+ 
 <img src="../Illustration/GRAPH3_AngleDOWN.png" width=300px>
  
 
