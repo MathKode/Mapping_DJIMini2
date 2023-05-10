@@ -1,5 +1,5 @@
 # Mapping for DJI Drone
-# V1.4 by Bimathax
+# V1.5 by Bimathax
 import PIL.Image
 from PIL.ExifTags import TAGS, GPSTAGS
 from os import listdir, path
@@ -9,23 +9,23 @@ from matplotlib import pyplot
 
 
 ####### CONSTANT #######
-picture_folder = "pictures"
-result_name = "final_______.jpeg"
+picture_folder = "data_test/2_reduce"
+result_name = "test_______.jpeg"
 """----------------"""
-altitude = None #m
+altitude = 30 #m
 picture_x_meter = None #m
 picture_y_meter = None #m
-cota_x = 8 # pixel/m
-cota_y = 3 # pixel/m
+cota_x = None # pixel/m
+cota_y = None # pixel/m
 """----------------"""
 Blur = False #True Or False
 show_graph = False
 verbose = 3 #LEVEL 0-1-2-3 (Nothing,Error and Major Info, Normal, All)
-setting_file = True
+setting_file = False
 """----------------"""
-picture_align_type = 1 #1=Horizontal ; 2=Vertical
-picture_align = ["reduce_DJI_0205.JPG","reduce_DJI_0213.JPG"] 
-angle = 24 #deg
+picture_align_type = 2 #1=Horizontal ; 2=Vertical
+picture_align = ["reduce_DJI_0223.JPG","reduce_DJI_0225.JPG"] 
+angle = None #deg
 ########################
 
 def get_exif(pic_folder,picture_name):
@@ -103,18 +103,19 @@ def rotation_center(angle_rad, x, y):
 
 def image_x_pronostic(altitude):
     """
-    After calculation test (I found 1m high = 1,369863014m on ground in XView)
-    I code this to help in the picture definition
-    1m high = 100/73m
+    See Altitude Excel Regression Courbe
+    y = 1,2852x
+    R^2 = 0,9999
     """
-    return altitude*1000/730
+    return 1.2852*altitude
 
 def image_y_pronostic(altitude):
     """
-    1m high = 1,088m y
-    1m high = 0.5*2250/1034
+    See Altitude Excel Regression Courbe
+    y = 0,7722x
+    R^2 = 0,9917
     """
-    return altitude*1/2*2250/1134
+    return 0.7722*altitude #metre au sol
 
 def cota_pronostic_bysize(width,height,picture_x_meter,picture_y_meter):
     cota_x = width/picture_x_meter
@@ -306,7 +307,8 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
                 print("By altitude")
             picture_x_meter=image_x_pronostic(altitude)
             if verbose>=3:
-                print("Picture x meter",picture_x_meter)
+                print("Pixel Pic width :", pic_width)
+                print("Picture x meter :",picture_x_meter)
             cota_x = int(pic_width/picture_x_meter)
         else:
             if verbose>=2:
@@ -328,6 +330,7 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
                 print("By altitude")
             picture_y_meter=image_y_pronostic(altitude)
             if verbose>=3:
+                print("Pixel Pic Height :", pic_height)
                 print("picture y meter",picture_y_meter)
             cota_y = int(pic_height/picture_y_meter)
         else:
