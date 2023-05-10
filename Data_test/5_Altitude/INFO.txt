@@ -1,0 +1,82 @@
+|--- WIDTH ---|
+DJI_0238
+	Width : 4000
+	Height : 2250
+	Altitude : 1m
+	Slider Sens : width
+	Slider Meter : 1m
+	Slider Size : 2901px
+	Cota (px/m) : 2901px/m
+	Taille Image (width/cota) : 1,3698m
+
+DJI_0242
+	Width : 4000
+	Height : 2250
+	Altitude : 
+	Slider Sens : width
+	Slider Meter : 1m
+	Slider Size : 1300px
+	Cota (px/m) : 1300px/m
+	Taille Image (width/cota) : 3.07692m
+
+DJI_0253
+	Width : 4000
+	Height : 2250
+	Altitude : 23m
+	Slider Sens : width
+	Slider Meter : 3m
+	Slider Size : 400px
+	Cota (px/m) : 133.33333333
+	Taille Image : 30m
+
+DJI_0254
+	Width : 4000
+	Height : 2250
+	Altitude : 40m
+	Slider Sens : width
+	Slider Meter : 3m
+	Slider Size : 232px
+	Cota (px/m) : 77.333333333
+	Taille Image : 51.724m
+
+DJI_0255
+	Width : 4000
+	Height : 2250
+	Altitude : 50m
+	Slider Sens : width
+	Slider Meter : 3m
+	Slider Size : 188px
+	Cota (px/m) : 62.6667
+	Taille Image : 63.8m
+
+|--- HEIGHT ---|
+
+DJI_0257
+	Width : 4000
+	Height : 2250
+	Altitude : 8.3m
+	Slider Sens : height
+	Slider Meter : 3m
+	Slider Size : 1105px
+	Cota (px/m) : 368.33333
+	Taille Y Image (height/cota) : 6.1086m
+
+DJI_0258
+	Width : 4000
+	Height : 2250
+	Altitude : 22m
+	Slider Sens : height
+	Slider Meter : 3m
+	Slider Size : 306px
+	Cota (px/m) : 102
+	Taille Y Image : 22.0588m
+
+DJI_0259
+	Width : 4000
+	Height : 2250
+	Altitude : 50m
+	Slider Sens : height
+	Slider Meter : 3m
+	Slider Size : 182px
+	Cota (px/m) : 60.66667
+	Taille Y Image : 37.0879m
