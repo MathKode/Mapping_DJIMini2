@@ -11,7 +11,7 @@ Ici vous avez un exemple de rendu :
 
 <img src="../Illustration/test4.jpeg">
 
-*Version 1.2 après réglage :
+*Version 1.2 après réglage :*
 
 <img src="../Illustration/test200_26_reduce.jpeg" width=400px>
 
