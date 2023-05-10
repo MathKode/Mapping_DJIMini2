@@ -44,6 +44,8 @@ Sur le logiciel ([main2.py](../main2.py)), il y a de nombreuse variable à param
 - **show_graph** (*boolean*) : Affiche les graphiques de contrôle (util au réglage : voir note *Correction Image*)
 - **picture_align_type** (*1 or 2*) : Spécifie si les 2 photos repères sont alignés verticalement ou horizontalement (1 ou 2). *Inutile si la variable angle est différente de 0*
 - **picture_align** (*[PICTURE1_NAME, PICTURE2_NAME]*) : Noms des 2 photos servant de repère (voir note *Prise de Photo*). *Obligatoire même si la variable angle est différente de 0*
+- **verbose** (*0 to 3*) : Permet d'afficher ce qu'est entrain de faire le script (le niveau 0 correspond à aucun texte, même pas les erreurs !)
+- **setting_file** (*boolean*) : Créer un fichier contenant la valeur des différentes variables (util pour le débuggage)
 
 Les paramètres suivant permettent de pronostiquer la valeur de *cota_x* et *cota_y*. C'est deux variables servent à calculer le nombre de pixel nécessaire pour un espacement de 1m (si cota_x=30px/m et qu'il y a une distance de 3m alors, il y aura 90pixels qui s'éparera les deux images).
 Ainsi soit vous renseigner *altitude*, soit *picture_x_meter* *picture_y_meter*, soit *cota_x* *cota_y* (pas les 3 !) :
