@@ -100,4 +100,7 @@ Le repère à pivoté sur lui-même selon un angle de 50deg afin que le premier 
  
 <img src="../Illustration/GRAPH3_AngleDOWN.png" width=300px>
  
+L'angle est donc la première chose à changer pour s'assurer que les images soient toutes aux bonnes endroits (par exemple, qu'elles soient toutes alignées). C'est seuleument une fois que vous l'avez trouvé que vous modifiez les proportions (cota).
+ 
+ 
 
