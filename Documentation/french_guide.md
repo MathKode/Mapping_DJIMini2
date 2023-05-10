@@ -42,8 +42,6 @@ Sur le logiciel ([main2.py](../main2.py)), il y a de nombreuse variable à param
 - **result_name** (*string*) : nom final de l'image (avec le .jpeg)
 - **Blur** (*boolean*) : Active l'effet Blur, ce qui permet de voire à travers les images superposées
 - **show_graph** (*boolean*) : Affiche les graphiques de contrôle (util au réglage : voir note *Correction Image*)
-- **picture_align_type** (*1 or 2*) : Spécifie si les 2 photos repères sont alignés verticalement ou horizontalement (1 ou 2). *Inutile si la variable angle est différente de 0*
-- **picture_align** (*[PICTURE1_NAME, PICTURE2_NAME]*) : Noms des 2 photos servant de repère (voir note *Prise de Photo*). *Obligatoire même si la variable angle est différente de 0*
 - **verbose** (*0 to 3*) : Permet d'afficher ce qu'est entrain de faire le script (le niveau 0 correspond à aucun texte, même pas les erreurs !)
 - **setting_file** (*boolean*) : Créer un fichier contenant la valeur des différentes variables (util pour le débuggage)
 
@@ -58,7 +56,8 @@ Ainsi soit vous renseigner *altitude*, soit *picture_x_meter* *picture_y_meter*,
  Enfin il faut spécifier la valeur de l'angle (utilisé pour aligner les photos). Si vous laissez la valeur *None*, il sera *calculé automatiquement* à partir des informations des 2 variables *picture_align_type* et *picture_align*. Ainsi, cette variable sert principalement à la correction de l'angle pronostiqué...
   
 *Pour résumer : nous vous conseillons d'exécuter une première fois le script avec la valeur angle = None, de reprendre celui calculé par défaut et de l'ajuster pour corriger les erreurs (voir la section correction)*
-
+- **picture_align_type** (*1 or 2*) : Spécifie si les 2 photos repères sont alignés verticalement ou horizontalement (1 ou 2). *Inutile si la variable angle est différente de 0*
+- **picture_align** (*[PICTURE1_NAME, PICTURE2_NAME]*) : Noms des 2 photos servant de repère (voir note *Prise de Photo*). *Obligatoire même si la variable angle est différente de 0*
 - **angle** (*int+/- deg*) : Angle en degre qui correspond à la rotation du repère nécessaire pour aligner les photos
 
 ## Execution du scipt
