@@ -102,5 +102,12 @@ Le repère à pivoté sur lui-même selon un angle de 50deg afin que le premier 
  
 L'angle est donc la première chose à changer pour s'assurer que les images soient toutes aux bonnes endroits (par exemple, qu'elles soient toutes alignées). C'est seuleument une fois que vous l'avez trouvé que vous modifiez les proportions (cota).
  
- 
+ |Angle Trop Bas|Angle Parfait|Angle Trop Haut|
+ |---|---|---|
+ |-60°|-32°|-5°|
+ |<img src="../Illustration/ANG_EXAMPLE_DOWN.png" width=300px>|<img src="../Illustration/ANG_EXAMPLE_NORMAL.png" width=300px>|<img src="../Illustration/ANG_EXAMPLE_UP.png" width=300px>|
+ |<img src="../Illustration/ANG_EXAMPLE_DOWN.jpeg" width=300px>|<img src="../Illustration/ANG_EXAMPLE_NORMAL.jpeg" width=300px>|<img src="../Illustration/ANG_EXAMPLE_UP.jpeg" width=300px>|
 
+ 
+ 
+ 
