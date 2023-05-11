@@ -108,6 +108,12 @@ L'angle est donc la première chose à changer pour s'assurer que les images soi
  |<img src="../Illustration/ANG_EXAMPLE_DOWN.png" width=300px>|<img src="../Illustration/ANG_EXAMPLE_NORMAL.png" width=300px>|<img src="../Illustration/ANG_EXAMPLE_UP.png" width=300px>|
  |<img src="../Illustration/ANG_EXAMPLE_DOWN.jpeg" width=300px>|<img src="../Illustration/ANG_EXAMPLE_NORMAL.jpeg" width=300px>|<img src="../Illustration/ANG_EXAMPLE_UP.jpeg" width=300px>|
 
+#### Altitude
+
+Une fois que les images se trouvent au bon endroit, il faut trouver les bonnes proportions (entre les pixel et les mètres : *cota*). Pour ajuster les proportions, on peut modifier soit *altitude*, soit *picture_x_meter* *picture_y_meter*, soit *cota_x* *cota_y* (que 1 des trois).
  
+- **Altitude Augmente**
+ 
+- **Altitude Diminue**
  
  
