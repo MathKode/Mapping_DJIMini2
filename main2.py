@@ -1,5 +1,5 @@
 # Mapping for DJI Drone
-# V1.5 by Bimathax
+# V1.6 by Bimathax
 import PIL.Image
 from PIL.ExifTags import TAGS, GPSTAGS
 from os import listdir, path
@@ -9,23 +9,24 @@ from matplotlib import pyplot
 
 
 ####### CONSTANT #######
-picture_folder = "data_test/2_reduce"
-result_name = "test_______.jpeg"
+picture_folder = "Data_test/11_tri_reduce"
+result_name = "test21.jpeg"
 """----------------"""
-altitude = 30 #m
+altitude = 120 #m
 picture_x_meter = None #m
 picture_y_meter = None #m
-cota_x = None # pixel/m
-cota_y = None # pixel/m
+cota_x = 5#12 # pixel/m
+cota_y = 5#10 # pixel/m
 """----------------"""
 Blur = False #True Or False
-show_graph = False
-verbose = 3 #LEVEL 0-1-2-3 (Nothing,Error and Major Info, Normal, All)
+show_graph = True
+verbose = 1 #LEVEL 0-1-2-3 (Nothing,Error and Major Info, Normal, All)
 setting_file = False
 """----------------"""
-picture_align_type = 2 #1=Horizontal ; 2=Vertical
-picture_align = ["reduce_DJI_0223.JPG","reduce_DJI_0225.JPG"] 
-angle = None #deg
+picture_align_type = 1 #1=Horizontal ; 2=Vertical
+picture_align = ["reduce_DJI_0412.JPG","reduce_DJI_0415.JPG"] 
+picture_align_correction = [-1,1] #[X;Y]
+angle = -55 #deg
 ########################
 
 def get_exif(pic_folder,picture_name):
@@ -191,6 +192,16 @@ def copier_image(pic_folder,picture_name,begin_x,begin_y,image_result,blur):
                     image_result.putpixel((begin_x+x,begin_y+y),middle)
     return image_result
 
+def picture_correction(rotate_pic,picture_align_correction):
+    #Picture Align Correction = [x,y]
+    result={}
+    for picture in rotate_pic:
+        ls = rotate_pic[picture]
+        x = ls[0]*picture_align_correction[0]
+        y = ls[1]*picture_align_correction[1]
+        result[picture]=[x,y]
+    return result
+
 def setting_file_save(result_name,cota_x,cota_y,picture_x_meter,picture_y_meter,altitude):
     file=open(f"SETTING_{result_name}.txt","w")
     file.write(result_name + "\n")
@@ -200,8 +211,11 @@ def setting_file_save(result_name,cota_x,cota_y,picture_x_meter,picture_y_meter,
     file.write(f"picture_x_meter : {picture_x_meter}")
     file.write(f"picture_y_meter : {picture_y_meter}")
 
-def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file):
-    ls_pic=listdir(pic_folder)
+def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file,picture_align_correction):
+    ls_pic=[]
+    for i in listdir(pic_folder):
+        if i[0]!=".":
+            ls_pic.append(i)
     if verbose==3:
         print("--- Liste Image ---")
         print(ls_pic,"\n")
@@ -295,7 +309,15 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
     if show_graph:
         graph_representation(rotate_pic)
     
-
+    if verbose>=2:
+        print("\n--- Alignement Correction ---")
+    new_rotate_pic=picture_correction(rotate_pic,picture_align_correction)
+    if verbose>=3:
+        print(new_rotate_pic)
+    rotate_pic={}
+    rotate_pic=new_rotate_pic
+    if show_graph:
+        graph_representation(rotate_pic) #= new_rotate_pic
     
     #https://pixspy.com/
     #COTA X
@@ -393,4 +415,4 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
         setting_file_save(result_name,cota_x,cota_y,picture_x_meter,picture_y_meter,altitude)
 
 
-main(picture_folder,result_name,altitude, picture_x_meter,picture_y_meter,Blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file)
+main(picture_folder,result_name,altitude, picture_x_meter,picture_y_meter,Blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file,picture_align_correction)
