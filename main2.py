@@ -1,5 +1,5 @@
 # Mapping for DJI Drone
-# V1.6 by Bimathax
+# V1.7 by Bimathax
 import PIL.Image
 from PIL.ExifTags import TAGS, GPSTAGS
 from os import listdir, path
@@ -9,24 +9,27 @@ from matplotlib import pyplot
 
 
 ####### CONSTANT #######
-picture_folder = "Data_test/11_tri_reduce"
-result_name = "test21.jpeg"
+picture_folder = "data_test/9_result"
+result_name = "test____________.jpeg"
 """----------------"""
-altitude = 120 #m
+altitude = 62 #m
 picture_x_meter = None #m
 picture_y_meter = None #m
-cota_x = 5#12 # pixel/m
-cota_y = 5#10 # pixel/m
+cota_x = None # pixel/m
+cota_y = None # pixel/m
 """----------------"""
 Blur = False #True Or False
-show_graph = True
-verbose = 1 #LEVEL 0-1-2-3 (Nothing,Error and Major Info, Normal, All)
+show_graph = False
+verbose = 3 #LEVEL 0-1-2-3 (Nothing,Error and Major Info, Normal, All)
 setting_file = False
 """----------------"""
 picture_align_type = 1 #1=Horizontal ; 2=Vertical
-picture_align = ["reduce_DJI_0412.JPG","reduce_DJI_0415.JPG"] 
-picture_align_correction = [-1,1] #[X;Y]
-angle = -55 #deg
+picture_align = ["DJI_0412.JPG","DJI_0413.JPG"] 
+angle = None #deg
+"""----------------"""
+picture_align_correction = [1,1] #[X;Y]
+meridian_ref=0
+parallel_ref=180
 ########################
 
 def get_exif(pic_folder,picture_name):
@@ -62,10 +65,10 @@ def haversine(lat1,long1,lat2,long2):
     d=6_371_005.076123*acos(sin(lat1)*sin(lat2)+cos(lat1)*cos(lat2)*cos(long1-long2))
     return d
 
-def deg_to_meter(lat,long):
+def deg_to_meter(lat,long,meridian_ref,parallel_ref):
     #Par rapport aux méridien de greenwich et au 1 parrallelle
-    x=haversine(lat,long,lat,0)
-    y=haversine(lat,long,0,long)
+    x=haversine(lat,long,lat,meridian_ref)
+    y=haversine(lat,long,parallel_ref,long)
     return x, y
 
 def calibration_newcenter(center_name, meter_pic):
@@ -211,7 +214,7 @@ def setting_file_save(result_name,cota_x,cota_y,picture_x_meter,picture_y_meter,
     file.write(f"picture_x_meter : {picture_x_meter}")
     file.write(f"picture_y_meter : {picture_y_meter}")
 
-def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file,picture_align_correction):
+def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file,picture_align_correction,meridian_ref,parallel_ref):
     ls_pic=[]
     for i in listdir(pic_folder):
         if i[0]!=".":
@@ -244,7 +247,7 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
         gps_pic[i]=[long,lat]
         if verbose == 3:
             print("Latitude :",lat, "\nLongitude :",long)
-        y, x = deg_to_meter(lat,long)
+        y, x = deg_to_meter(lat,long,meridian_ref,parallel_ref)
         if verbose == 3 or verbose == 2:
             print(f"--- Convertion in Meter ---\nLat : {y}\nLong : {x}")
         meter_pic[i]=[x,y]
@@ -415,4 +418,4 @@ def main(pic_folder,result_name,altitude,picture_x_meter,picture_y_meter,blur,sh
         setting_file_save(result_name,cota_x,cota_y,picture_x_meter,picture_y_meter,altitude)
 
 
-main(picture_folder,result_name,altitude, picture_x_meter,picture_y_meter,Blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file,picture_align_correction)
+main(picture_folder,result_name,altitude, picture_x_meter,picture_y_meter,Blur,show_graph,picture_align,picture_align_type,cota_x,cota_y,angle,verbose,setting_file,picture_align_correction,meridian_ref,parallel_ref)
